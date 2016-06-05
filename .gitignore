@@ -49,3 +49,4 @@ Predictions/submission_1_NN.gz
 *.iml
 .idea/misc.xml
 *.xml
+*.gz
