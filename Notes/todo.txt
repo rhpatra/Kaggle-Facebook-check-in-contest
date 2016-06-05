@@ -1,5 +1,12 @@
 * Plot histogram of checkins by place ids.
 
-* Check-ins by x and y, plot this on a 2d plane.
-
 * Try out random forest classifier.
+    - Build a version where you can parallelize training and prediction wrt number of trees.
+
+* Do cross-validation to decide the depth of tree.
+
+* Do a baysian optimization to determine the different parameters:
+    - Like the size of bootstrap dataset.
+    - Number of trees.
+    - Size of leaf.
+    - Number of features to consider for splitting a node.
