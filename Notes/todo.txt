@@ -1,0 +1,5 @@
+* Plot histogram of checkins by place ids.
+
+* Check-ins by x and y, plot this on a 2d plane.
+
+* Try out random forest classifier.
