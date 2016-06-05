@@ -8,10 +8,11 @@ def nn(trainfile_path, testfile_path):
     train = pd.read_csv(trainfile_path)
     test = pd.read_csv(testfile_path)
     tree = KDTree(train[['x', 'y']])
-    _, ind = tree.query(test[['x', 'y']], k=1)
-    ind1 = [x[0] for x in ind]
-    test['place_id'] = train.iloc[ind1].place_id.values
-    test[['row_id', 'place_id']].to_csv('submission_1NN.gz', index=False, compression='gzip')
+    _, ind = tree.query(test[['x', 'y']], k=3)
+    temp = [train.iloc[x].place_id.values for x in ind]
+    temp = [" ".join((str(y) for y in x)) for x in temp]
+    test['place_id'] = temp
+    test[['row_id', 'place_id']].to_csv('submission_NN.gz', index=False, compression='gzip')
 
 
 def main():
