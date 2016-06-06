@@ -23,3 +23,5 @@ trees so that you can stop growing more trees when you are at the saturation lim
 - The tree depth is going to decide whether you are underfitting or overfitting the model.
 
 - Bagging vs Non-bagging: Bagging scenario deals with outliers better.
+
+- py -u Scripts\random_forest.py Data\train_sample.csv Data\test_sample.csv
