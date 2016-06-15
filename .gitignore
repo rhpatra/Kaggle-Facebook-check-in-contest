@@ -50,3 +50,4 @@ Predictions/submission_1_NN.gz
 .idea/misc.xml
 *.xml
 *.gz
+*.csv
