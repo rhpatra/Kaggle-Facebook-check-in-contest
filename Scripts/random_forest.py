@@ -6,7 +6,7 @@ import os
 from sklearn.ensemble import RandomForestClassifier
 
 
-def random_forest(train_file_path, test_file_path):
+def random_forest(train_file_path, test_file_path, output_file_path):
     train = pd.read_csv(train_file_path)
     test = pd.read_csv(test_file_path)
 
@@ -62,7 +62,7 @@ def random_forest(train_file_path, test_file_path):
             # clf = GradientBoostingClassifier();
             # clf = LogisticRegression(multi_class='multinomial', solver = 'lbfgs');
             # clf = xgb.XGBClassifier(n_estimators=10);
-            clf = RandomForestClassifier(n_estimators=10, n_jobs=-1, random_state=0)
+            clf = RandomForestClassifier(n_estimators=100, n_jobs=-1)
             clf.fit(X_train_grid, y_train_grid)
 
             preds = dict(zip([el for el in clf.classes_], zip(*clf.predict_proba(X_test_grid))))
@@ -84,15 +84,17 @@ def random_forest(train_file_path, test_file_path):
     preds_total.drop('0_', axis=1, inplace=True)
     preds_total.drop('1_', axis=1, inplace=True)
     preds_total.drop('2_', axis=1, inplace=True)
-    sub_file = os.path.join('submission_random_forest_abhishek_kadian' + str(datetime.datetime.now().strftime("%Y-%m-%d-%H-%M")) + '.csv')
+    # sub_file = os.path.join('submission_random_forest_abhishek_kadian' + str(datetime.datetime.now().strftime("%Y-%m-%d-%H-%M")) + '.csv')
+    sub_file = output_file_path
     preds_total.to_csv(sub_file, index=False)
 
 
 def main():
     train_file_path = sys.argv[1]
     test_file_path = sys.argv[2]
+    output_file_path = sys.argv[3]
     start_time = time.time()
-    random_forest(train_file_path, test_file_path)
+    random_forest(train_file_path, test_file_path, output_file_path)
     print("Time taken to run Random Forest: %s seconds" % (time.time() - start_time))
 
 
